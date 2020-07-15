@@ -1,0 +1,5 @@
+*************** TO-DO List for Midas Funding Team 3 *****************
+*************** Please mark all completed items with xx *************
+
+1. first item here
+2. testing commits
