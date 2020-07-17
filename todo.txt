@@ -2,4 +2,4 @@
 *************** Please mark all completed items with xx *************
 
 1. first item here
-2. testing commits
+2. testing commit
