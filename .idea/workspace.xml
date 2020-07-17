@@ -16,7 +16,14 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/sprint2-sk" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="761ade20-5ae9-4487-80cc-e3ba2614a248" name="Default Changelist" comment="" />
@@ -46,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/bootstrap-4.5.0-examples/bootstrap-4.5.0-examples/carousel/carousel.css" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/bootstrap-4.5.0-examples/bootstrap-4.5.0-examples/album/album.css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -65,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594999039722</updated>
-      <workItem from="1594999042100" duration="1989000" />
+      <workItem from="1594999042100" duration="2383000" />
     </task>
     <servers />
   </component>
@@ -77,16 +84,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/sprint2-sk" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="735" y="275" key="FileChooserDialogImpl" timestamp="1594999600887">
+    <state x="735" y="275" key="FileChooserDialogImpl" timestamp="1595003906622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="735" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594999600887" />
+    <state x="735" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595003906622" />
   </component>
 </project>
