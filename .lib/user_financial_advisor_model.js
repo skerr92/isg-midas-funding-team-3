@@ -2,9 +2,9 @@ const mongoose = require('mongoose').Mongoose
 const emailValidator = require('email-validator')
 
 let advisorInstance = new mongoose()
-const db = ''
+const db = 'mongodb+srv://admin:admin@cluster0.bnq3j.mongodb.net/FinAUsers?retryWrites=true&w=majority'
 
-let FinancialAdvisors = advisorInstance.model('FinancialAdvisors', {
+let FinAUsers = advisorInstance.model('FinancialAdvisors', {
     firstName: String,
     lastName: String,
     email: String,
@@ -14,10 +14,14 @@ let FinancialAdvisors = advisorInstance.model('FinancialAdvisors', {
     license: String
 })
 
-if (FinancialAdvisors.license) {
+if (FinAUsers.license) {
     advisorInstance.connect(db, {useNewUrlParser: true}, (err) => {
         console.log('Mongo DB Financial Advisor User connected', err)
     })
 }
 
-module.exports = FinancialAdvisors
+advisorInstance.connect(db, {useNewUrlParser: true}, (err) => {
+    console.log('Mongo DB Financial Advisor User connected', err)
+})
+
+module.exports = FinAUsers
