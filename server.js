@@ -7,6 +7,8 @@ const session = require('express-session')
 const io = require('socket.io')(http)
 const jwt = require('jsonwebtoken')
 const userdb = require('./.lib/user_model')
+const FinAdb = require('./.lib/user_financial_advisor_model')
+const Donordb = require('./.lib/donor_model')
 
 const authPath = require('./.lib/routes/auth')
 

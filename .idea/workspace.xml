@@ -36,17 +36,12 @@
     <list default="true" id="761ade20-5ae9-4487-80cc-e3ba2614a248" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.lib/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lib/donor_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/donor_model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.lib/models/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/models/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lib/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/routes/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.lib/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lib/user_financial_advisor_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/user_financial_advisor_model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.lib/user_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/user_model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/signin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
