@@ -3,11 +3,11 @@ const emailValidator = require('email-validator')
 
 let donorInstance = new mongoose()
 
-const db = ''
+const db = 'mongodb+srv://admin:admin@cluster0.bnq3j.mongodb.net/DonorUsers?retryWrites=true&w=majority'
 
 donorInstance.Promise
 
-let Donors = donorInstance.model('Donors', {
+let DonorUsers = donorInstance.model('Donors', {
     firstName: String,
     lastName: String,
     email: String,
@@ -16,7 +16,7 @@ let Donors = donorInstance.model('Donors', {
 })
 
 donorInstance.connect(db, { useNewUrlParser: true} , (err) => {
-    console.log('Mongo DB User connected', err)
+    console.log('Mongo DB Donor User connected', err)
 })
 
-module.exports = Donors
+module.exports = DonorUsers
