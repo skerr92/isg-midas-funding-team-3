@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Signin Template · Bootstrap</title>
+    <title>User Registration - Touch by Midas Funding</title>
 
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -62,20 +62,24 @@
     </nav>
 </header>
 <body class="text-center">
-<form class="form-signin">
-    <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<form id="standardsignup" class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+    <label for="inputFirstName" class="sr-only">First Name</label>
+    <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required>
+    <label for="inputLastName" class="sr-only">First Name</label>
+    <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="inputRPassword" class="sr-only">Re-enter Password</label>
+    <input type="password" id="inputRPassword" class="form-control" placeholder="Re-enter Password" required>
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> Agree to Terms & Conditions
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p><a href="register.html">Standard Sign Up</a> <br> <a href="advisor_register.html">Advisor Sign Up</a><br>  <a href="donor_register.html">Donor Sign Up</a> </p>
+    <button id="standard_signup" class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
 </form>
 </body>
