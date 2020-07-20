@@ -1,5 +1,4 @@
-import * as model from "mongoose";
-
+const mongoose = require('mongoose').Mongoose
 const emailValidator = require('email-validator')
 
 let advisorInstance = new mongoose()
