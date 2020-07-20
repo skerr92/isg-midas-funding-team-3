@@ -34,17 +34,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="761ade20-5ae9-4487-80cc-e3ba2614a248" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.lib/auth.db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lib/config/passport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lib/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lib/models/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lib/routes/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lib/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lib/user_model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lib/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lib/models/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/models/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lib/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lib/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lib/user_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/user_model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/signin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,15 +58,13 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="package.json" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sprint2-sk" />
+        <entry key="$PROJECT_DIR$" value="feature/initial-return-visit-to-midas" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,7 +79,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.3.0" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/bootstrap-4.5.0-examples/bootstrap-4.5.0-examples/album/album.css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -88,12 +87,28 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\SethKerr\Documents\isg-midas-funding-team-3\.lib" />
+      <recent name="C:\Users\SethKerr\Documents\isg-midas-funding-team-3\test" />
+      <recent name="C:\Users\SethKerr\Documents\isg-midas-funding-team-3\files" />
+      <recent name="C:\Users\SethKerr\Documents\isg-midas-funding-team-3\.lib\models" />
     </key>
+  </component>
+  <component name="RunManager" selected="Node.js.server.js">
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="user_model.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/.lib/user_model.js" working-dir="$PROJECT_DIR$/files">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.user_model.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -105,7 +120,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594999039722</updated>
-      <workItem from="1594999042100" duration="9757000" />
+      <workItem from="1594999042100" duration="2383000" />
     </task>
     <servers />
   </component>
@@ -118,11 +133,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="true" />
-                </map>
-              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -139,11 +149,28 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="735" y="275" key="FileChooserDialogImpl" timestamp="1595003906622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="735" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595003906622" />
+    <state width="1634" height="266" key="GridCell.Tab.0.bottom" timestamp="1595265852828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1634" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595265852828" />
+    <state width="1634" height="266" key="GridCell.Tab.0.center" timestamp="1595265852828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1634" height="266" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595265852828" />
+    <state width="1634" height="266" key="GridCell.Tab.0.left" timestamp="1595265852828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1634" height="266" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595265852828" />
+    <state width="1634" height="266" key="GridCell.Tab.0.right" timestamp="1595265852828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1634" height="266" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595265852828" />
   </component>
 </project>

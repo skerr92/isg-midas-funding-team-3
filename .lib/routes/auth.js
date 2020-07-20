@@ -12,16 +12,9 @@ const getTokenFromHeaders = (req) => {
 }
 
 const auth = {
-    required: jwt( {
-        secret: 'midas-touch',
-        userProperty: 'payload',
-        getToken: getTokenFromHeaders
+    required: jwt( { secret: 'midas-touch', algorithms: ['HS256'],  userProperty: 'payload', getToken: getTokenFromHeaders
     }),
-    optional: jwt( {
-        secret: 'midas-touch',
-        userProperty: 'payload',
-        getToken: getTokenFromHeaders,
-        credentialsRequired: false
+    optional: jwt( { secret: 'midas-touch', algorithms: ['HS256'], userProperty: 'payload', getToken: getTokenFromHeaders, credentialsRequired: false
     })
 }
 

@@ -4,11 +4,11 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const http = require('http').Server(app)
 const session = require('express-session')
-const io = require('socket.io')
+const io = require('socket.io')(http)
 const jwt = require('jsonwebtoken')
-const userdb = require('.lib/user_model')
+const userdb = require('./.lib/user_model')
 
-const authPath = require('.lib/routes/auth')
+const authPath = require('./.lib/routes/auth')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -18,7 +18,6 @@ app.use((req,res, next) => {
 	res.header("Access-control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept")
 	next()
 })
-
 let auth = express.Router();
 
 app.use(express.static(__dirname))
@@ -131,5 +130,10 @@ auth.get('/current', authPath.required, (req, res, next) => {
 
 
 io.on('connection', (socket) => {
+    const session = socket.request.session
+    session.connections++
+    session.save()
 	console.log('user connected');
 });
+
+
