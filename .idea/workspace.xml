@@ -8,6 +8,11 @@
       </path>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
       <path>
@@ -28,20 +33,14 @@
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/feature/initial-return-visit-to-midas" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/feature/donor-account-creation" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="761ade20-5ae9-4487-80cc-e3ba2614a248" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lib/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/config/passport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.lib/donor_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/donor_model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lib/models/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/models/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lib/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lib/user_financial_advisor_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/user_financial_advisor_model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lib/user_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/.lib/user_model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +64,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1eoryMbTybmz2oXsywrtyiqR2vT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -92,7 +94,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.server.js">
-    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server.js" working-dir="$PROJECT_DIR$">
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../../../../Program Files/nodejs/node" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="user_model.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/.lib/user_model.js" working-dir="$PROJECT_DIR$/files">
@@ -146,7 +148,15 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added donor register html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added donor register html" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="669" y="-882" key="#server.js" timestamp="1595270388205">
+      <screen x="0" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="669" y="-882" key="#server.js/0.0.1920.1080/0.-1080.1920.1080/1920.-1080.1360.768@0.-1080.1920.1080" timestamp="1595270388205" />
     <state x="735" y="275" key="FileChooserDialogImpl" timestamp="1595003906622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
