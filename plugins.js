@@ -19,7 +19,6 @@ $(() => {
             }
         }
     )
-    
 })
 
 function authenticate(res) {
