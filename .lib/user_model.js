@@ -12,6 +12,7 @@ let Users = userInstance.model('Users', {
     lastName: String,
     email: String,
     password: String,
+    accountType: String,
     token: String
 })
 
