@@ -1,4 +1,4 @@
-let socket = io()
+let socket = io()(server)
 
 const userurl = window.location.href
 const advisoruserurl = window.location.href
@@ -18,6 +18,7 @@ $(() => {
                 password: $("#inputPassword").val(),
                 accountType: "Basic User"
             }
+            register(user)
         }
     })
 
@@ -32,6 +33,19 @@ $(() => {
             }
         }
     })
+
+    $('#donor_signup').click(() => {
+        if ($("#inputPassword").val() === $("#inputRPassword").val()) {
+            const user = {
+                firstName: $("#inputFirstName").val(),
+                lastName: $("#inputLastName").val(),
+                email: $("#inputEmail").val(),
+                password: $("#inputPassword").val(),
+                accountType: "Donor User"
+            }
+        }
+    })
+
 })
 
 function authenticate(res) {
