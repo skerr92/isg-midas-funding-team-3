@@ -1,6 +1,7 @@
 let socket = io()
 
 const userurl = window.location.href
+const advisoruserurl = window.location.href
 
 $(() => {
     if(TOKEN_KEY === " " || NAME_KEY === " " || USER_KEY) {
@@ -22,7 +23,7 @@ $(() => {
 
     $('#advisor_signup').click(() => {
         if ($("#inputPassword").val() === $("#inputRPassword").val()) {
-            const user = {
+            const advisorUser = {
                 firstName: $("#inputFirstName").val(),
                 lastName: $("#inputLastName").val(),
                 email: $("#inputEmail").val(),
@@ -31,7 +32,6 @@ $(() => {
             }
         }
     })
-
 })
 
 function authenticate(res) {
@@ -49,6 +49,12 @@ function authenticate(res) {
 
 function register(user) {
     $.post(userurl + "auth/st_register", user, (data) => {
+        authenticate(data)
+    })
+}
+
+function registerAdvisor(advisorUser) {
+    $.post(advisoruserurl + "auth/ad_register", advisorUser, (data) => {
         authenticate(data)
     })
 }
