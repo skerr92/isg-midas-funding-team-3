@@ -20,6 +20,18 @@ $(() => {
         }
     })
 
+    $('#advisor_signup').click(() => {
+        if ($("#inputPassword").val() === $("#inputRPassword").val()) {
+            const user = {
+                firstName: $("#inputFirstName").val(),
+                lastName: $("#inputLastName").val(),
+                email: $("#inputEmail").val(),
+                password: $("#inputPassword").val(),
+                accountType: "Financial Advisor User"
+            }
+        }
+    })
+
 })
 
 function authenticate(res) {
