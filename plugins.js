@@ -23,7 +23,7 @@ $(() => {
 
     $('#advisor_signup').click(() => {
         if ($("#inputPassword").val() === $("#inputRPassword").val()) {
-            const advisorUser = {
+            const user = {
                 firstName: $("#inputFirstName").val(),
                 lastName: $("#inputLastName").val(),
                 email: $("#inputEmail").val(),
