@@ -6,6 +6,8 @@ const authdb = require('../auth.db')
 const users = require('../models/users')
 
 const Users = mongoose.model('Users')
+const FinAUsers = mongoose.model('FinAUsers')
+const DonorUsers = mongoose.model('DonorUsers')
 
 passport.use('local', new LocalStrategy({
     usernameField: 'email',
