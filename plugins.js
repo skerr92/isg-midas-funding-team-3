@@ -1,4 +1,4 @@
-let socket = io()
+let socket = io()(server)
 
 const userurl = window.location.href
 
@@ -17,6 +17,7 @@ $(() => {
                 password: $("#inputPassword").val(),
                 accountType: "Basic User"
             }
+            register(user)
         }
     })
 

@@ -53,7 +53,7 @@ let checkAuthenticated = (req, res, next) => {
 	let token = req.header('Authorization').split(' ')[1]
 }
 
-auth.post('/register', authPath.optional, (req, res, next) => {
+auth.post('/st_register', authPath.optional, (req, res, next) => {
     const user = req.body;
     console.log(user);
     if(!user.email) {
