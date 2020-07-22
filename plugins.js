@@ -65,3 +65,9 @@ function register(user) {
         authenticate(data)
     })
 }
+
+function registerAdvisor(user) {
+    $.post(userurl + "auth/ad_register", user, (data) => {
+        authenticate(data)
+    })
+}
