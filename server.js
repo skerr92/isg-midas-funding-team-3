@@ -104,24 +104,24 @@ auth.post('/ad_register', authPath.optional, (req, res, next) => {
 });
 
 auth.post('/do_register', authPath.optional, (req, res, next) => {
-    const advisorUser = req.body;
-    console.log(advisorUser);
-    if(!advisorUser.email) {
+    const donorUser = req.body;
+    console.log(donorUser);
+    if(!donorUser.email) {
         return res.status(422).json({
             errors: {
                 email: 'is required',
             },
         });
     }
-    if(!advisorUser.password) {
+    if(!donorUser.password) {
         return res.status(422).json({
             errors: {
                 password: 'is required',
             },
         });
     }
-    const finalUser = new FinAUsers(advisorUser);
-    finalUser.setPassword(advisorUser.password);
+    const finalUser = new DonorUsers(donorUser);
+    finalUser.setPassword(donorUser.password);
     console.log('We Made It!');
     let savedUser = authdb(finalUser);
     let finalSave = savedUser.save();
