@@ -47,6 +47,7 @@ $(() => {
                 password: $("#inputPassword").val(),
                 accountType: "Donor User"
             }
+            registerDonor(user)
         }
     })
 
@@ -73,6 +74,12 @@ function register(user) {
 
 function registerAdvisor(user) {
     $.post(userurl + "auth/ad_register", user, (data) => {
+        authenticate(data)
+    })
+}
+
+function registerDonor(user) {
+    $.post(userurl + "auth/do_register", user, (data) => {
         authenticate(data)
     })
 }

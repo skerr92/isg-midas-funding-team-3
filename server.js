@@ -103,6 +103,31 @@ auth.post('/ad_register', authPath.optional, (req, res, next) => {
     res.json({ user: finalUser.toAuthJSON() });
 });
 
+auth.post('/do_register', authPath.optional, (req, res, next) => {
+    const advisorUser = req.body;
+    console.log(advisorUser);
+    if(!advisorUser.email) {
+        return res.status(422).json({
+            errors: {
+                email: 'is required',
+            },
+        });
+    }
+    if(!advisorUser.password) {
+        return res.status(422).json({
+            errors: {
+                password: 'is required',
+            },
+        });
+    }
+    const finalUser = new FinAUsers(advisorUser);
+    finalUser.setPassword(advisorUser.password);
+    console.log('We Made It!');
+    let savedUser = authdb(finalUser);
+    let finalSave = savedUser.save();
+    res.json({ user: finalUser.toAuthJSON() });
+});
+
 //POST login route (optional, everyone has access)
 auth.post('/login', authPath.optional, (req, res, next) => {
     const user = req.body;
