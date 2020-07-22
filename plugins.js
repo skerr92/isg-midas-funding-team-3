@@ -1,6 +1,10 @@
-let socket = io()(server)
+//let socket = io()(server)
 
 const userurl = window.location.href
+
+const NAME_KEY = 'name';
+const TOKEN_KEY = 'token';
+const USER_KEY = 'user'
 
 $(() => {
     if(TOKEN_KEY === " " || NAME_KEY === " " || USER_KEY) {
