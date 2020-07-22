@@ -30,6 +30,7 @@ $(() => {
                 password: $("#inputPassword").val(),
                 accountType: "Financial Advisor User"
             }
+            registerAdvisor(user)
         }
     })
 
