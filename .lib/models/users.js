@@ -2,24 +2,29 @@ const mongoose = require('mongoose')
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 
-const { Schema } = mongoose
-
-const UserSchema = new Schema({
-    email: String,
-    salt: String
+const userSchema = mongoose.Schema({
+    local: {
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String,
+        accountType: String,
+        token: String
+    }
 })
 
-UserSchema.methods.setPassword = function(password) {
+userSchema.methods.setPassword = function(password) {
+    console.log("did we make it here?")
     this.salt = crypto.randomBytes(16).toString('hex')
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
 }
 
-UserSchema.methods.validatePassword = function(password) {
+userSchema.methods.validatePassword = function(password) {
     const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
     return this.hash = hash
 }
 
-UserSchema.methods.generateJWT = function() {
+userSchema.methods.generateJWT = function() {
     const today = new Date()
     const expirationDate = new Date(today)
     expirationDate.setDate(today.getDate() + 60)
@@ -31,7 +36,7 @@ UserSchema.methods.generateJWT = function() {
     }, 'midas-touch')
 }
 
-UserSchema.methods.toAuthJSON = function() {
+userSchema.methods.toAuthJSON = function() {
     return {
         _id: this._id,
         email: this.email,
@@ -39,4 +44,4 @@ UserSchema.methods.toAuthJSON = function() {
     }
 }
 
-mongoose.model('Users', UserSchema)
+mongoose.model('Users', userSchema, 'users')
