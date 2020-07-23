@@ -1,6 +1,7 @@
 //let socket = io()(server)
 
 const userurl = window.location.href
+console.log(userurl)
 
 const NAME_KEY = 'name';
 const TOKEN_KEY = 'token';
@@ -13,6 +14,7 @@ $(() => {
         localStorage.setItem(USER_KEY, " ")
     }
     $('#standard_signup').click(() => {
+        console.log("user clicked")
         if ($("#inputPassword").val() === $("#inputRPassword").val()) {
             const user = {
                 firstName: $("#inputFirstName").val(),
@@ -21,7 +23,9 @@ $(() => {
                 password: $("#inputPassword").val(),
                 accountType: "Basic User"
             }
+            console.log(user)
             register(user)
+
         }
     })
 
@@ -39,7 +43,7 @@ $(() => {
     })
 
     $('#donor_signup').click(() => {
-        if ($("#inputPassword").val() === $("#inputRPassword").val()) {
+        //if ($("#inputPassword").val() === $("#inputRPassword").val()) {
             const user = {
                 firstName: $("#inputFirstName").val(),
                 lastName: $("#inputLastName").val(),
@@ -48,7 +52,7 @@ $(() => {
                 accountType: "Donor User"
             }
             registerDonor(user)
-        }
+        //}
     })
 
 })
@@ -68,14 +72,15 @@ function authenticate(res) {
 
 function register(user) {
     console.log(user)
-    $.post( "/auth/st_register", user, (data) => {
-        //authenticate(data)
+    $.post( "http://localhost:8080/st_register", user, (data) => {
+        authenticate(data)
     })
+    console.log("button pressed")
 }
 
 function registerAdvisor(user) {
-    $.post("/auth/st_register", user, (data) => {
-        //authenticate(data)
+    $.post("/st_register", user, (data) => {
+        authenticate(data)
     })
 }
 

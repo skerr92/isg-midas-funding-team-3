@@ -24,11 +24,11 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
-app.use((req,res, next) => {
+/*app.use((req,res, next) => {
 	res.header("Access-Control-Allow-Origin", "*")
 	res.header("Access-control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept")
 	next()
-})
+})*/
 
 app.use(session({secret: 'midas-touch'}))
 app.use(passport.initialize())
@@ -40,6 +40,7 @@ app.use('/auth',auth)
 require('./.lib/routes/routes')(app, auth,passport)
 app.use(express.static(__dirname))
 app.set('view engine', 'ejs')
+
 
 const server = http.listen('8080', () => {
     console.log('listening on: ', server.address().port)

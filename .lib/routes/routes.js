@@ -1,3 +1,4 @@
+const users = require('../models/users')
 module.exports = (app,auth, passport) =>
 {
 
@@ -17,14 +18,18 @@ module.exports = (app,auth, passport) =>
         let token = req.header('Authorization').split(' ')[1]
     }
 
-    auth.post('/st_register', passport.authenticate('local-signup', {
-        successRedirect: '/st_dashboard',
-        failureRedirect : '/register.html',
-        failureFlash : true
-
+    app.post('/st_register', passport.authenticate('local-signup', {
+        successRedirect: '/st_dashboard', // redirect to the secure profile section
+        failureRedirect: '/register.html', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
     }));
-    auth.get('/sd_dashboard', isLoggedIn, (req, res) => {
-        res.render('st_dashboard.ejs')
+    //app.post('/st_register', passport.authenticate('local-signup'), (req, res) => {
+      //  console.log(res.json)
+        //res.json(req.body)
+    //});
+    app.get('/st_dashboard', isLoggedIn,(req, res) => {
+        console.log("trying to render this")
+        res.render('st_dashboard')
     })
 
     /*auth.post('/ad_register', authPath.optional, (req, res, next) => {
@@ -105,8 +110,11 @@ module.exports = (app,auth, passport) =>
     });
 }
 let isLoggedIn = (req, res, next) => {
-    if (req.isAuthenticated())
+    console.log("looking to see if we can authenticate")
+    if (req.isAuthenticated()) {
+        console.log("we're in the if is authenticated check")
         return next()
+    }
 
     res.redirect('/index.html')
 }
