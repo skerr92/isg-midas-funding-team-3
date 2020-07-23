@@ -66,13 +66,14 @@ function authenticate(res) {
 }
 
 function register(user) {
-    $.post(userurl + "auth/st_register", user, (data) => {
-        authenticate(data)
+    console.log(user)
+    $.post( "/auth/st_register", user, (data) => {
+        //authenticate(data)
     })
 }
 
 function registerAdvisor(user) {
-    $.post(userurl + "auth/ad_register", user, (data) => {
-        authenticate(data)
+    $.post("/auth/st_register", user, (data) => {
+        //authenticate(data)
     })
 }
