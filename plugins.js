@@ -55,6 +55,22 @@ $(() => {
         //}
     })
 
+    $('#literacy_signup').click(() => {
+        console.log("user clicked")
+        if ($("#inputPassword").val() === $("#inputRPassword").val()) {
+            const user = {
+                firstName: $("#inputFirstName").val(),
+                lastName: $("#inputLastName").val(),
+                email: $("#inputEmail").val(),
+                password: $("#inputPassword").val(),
+                accountType: "Financial Literacy User"
+            }
+            console.log(user)
+            registerLiteracy(user)
+
+        }
+    })
+
 })
 
 function authenticate(res) {
@@ -86,6 +102,12 @@ function registerAdvisor(user) {
 
 function registerDonor(user) {
     $.post(userurl + "auth/do_register", user, (data) => {
+        authenticate(data)
+    })
+}
+
+function registerLiteracy(user) {
+    $.post("/lt_register", user, (data) => {
         authenticate(data)
     })
 }
