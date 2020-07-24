@@ -3,25 +3,26 @@ const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 
 const userSchema = mongoose.Schema({
-    local: {
-        firstName: String,
-        lastName: String,
-        email: String,
-        password: String,
-        accountType: String,
-        token: String
-    }
+
+    firstName: String,
+    lastName: String,
+    email: String,
+    password: String,
+    accountType: String,
+    token: String
 })
 
 userSchema.methods.setPassword = function(password) {
     console.log("did we make it here?")
     this.salt = crypto.randomBytes(16).toString('hex')
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
+    return this.hash
 }
 
 userSchema.methods.validatePassword = function(password) {
+    this.salt = crypto.randomBytes(16).toString('hex')
     const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
-    return this.hash = hash
+    return this.hash === hash
 }
 
 userSchema.methods.generateJWT = function() {

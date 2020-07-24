@@ -17,17 +17,42 @@ module.exports = (app,auth, passport) =>
             return res.status(401).send({message: 'Unauthorized request. missing authentication header'})
         let token = req.header('Authorization').split(' ')[1]
     }
+    /*app.post('/st_register',
+        passport.authenticate('local-signup', { successRedirect: '/st_dashboard',
+            failureRedirect: '/register.html',
+            failureFlash: true })
+    );*/
 
-    app.post('/st_register', passport.authenticate('local-signup', {
-        successRedirect: '/st_dashboard', // redirect to the secure profile section
-        failureRedirect: '/register.html', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
-    //app.post('/st_register', passport.authenticate('local-signup'), (req, res) => {
+    app.post('/st_register', function(req, res, next) {
+        passport.authenticate('local-signup', (err, user, info) => {
+            console.log("we're in now! first check for errors..")
+            console.log(err)
+            if (err) {return next(err)}
+            console.log("now checking for no users...")
+            //console.log(user)
+            if(!user) {return res.redirect('/register.html')}
+            //req.user = user
+            //return res.redirect('/st_dashboard')
+            req.logIn(user, function (err) {
+                //console.log(err)
+                if (err) return next()
+                req.session.save(()=> {
+                    return res.redirect('/st_dashboard')
+                })
+
+            })
+
+        })(req, res, next)
+    })
+    /*app.post('/st_register', passport.authenticate('local-signup'), (req, res, next) => {
       //  console.log(res.json)
         //res.json(req.body)
-    //});
-    app.get('/st_dashboard', isLoggedIn,(req, res) => {
+        res.redirect("/st_dashboard")
+        //res.json({token: req.body})
+
+        next()
+    });*/
+    app.get('/st_dashboard',isLoggedIn,(req, res) => {
         console.log("trying to render this")
         res.render('st_dashboard')
     })
@@ -55,10 +80,32 @@ module.exports = (app,auth, passport) =>
         let savedUser = authdb(finalUser);
         let finalSave = savedUser.save();
         res.json({user: finalUser.toAuthJSON()});
-    });
+    });*/
+    app.post('/login', function(req, res, next) {
+        passport.authenticate('local-login', (err, user, info) => {
+            console.log("we're in now! first check for errors..")
+            console.log(err)
+            if (err) {return next(err)}
+            console.log("now checking for no users...")
+            console.log(user)
+            if(!user) {return res.redirect('/register.html')}
+            //req.user = user
+            //return res.redirect('/st_dashboard')
+            req.logIn(user, function (err) {
+                //console.log(err)
+                if (err) return next()
+                req.session.save(()=> {
+                    return res.redirect('../st_dashboard')
+                })
+
+            })
+
+        })(req, res, next)
+    })
+
 
 //POST login route (optional, everyone has access)
-    auth.post('/login', authPath.optional, (req, res, next) => {
+    /*auth.post('/login', authPath.optional, (req, res, next) => {
         const user = req.body;
         console.log(user);
         if (!user.email) {
@@ -93,7 +140,7 @@ module.exports = (app,auth, passport) =>
             }
             return res.sendStatus(400).info;
         })(req, res, next);
-    });*/
+    });*!/*/
 //GET current route (required, only authenticated users have access)
     auth.get('/current', isLoggedIn, (req, res, next) => {
         const id = req.body;
@@ -111,10 +158,10 @@ module.exports = (app,auth, passport) =>
 }
 let isLoggedIn = (req, res, next) => {
     console.log("looking to see if we can authenticate")
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated) {
         console.log("we're in the if is authenticated check")
         return next()
     }
 
-    res.redirect('/index.html')
+    return res.redirect('/index.html')
 }
