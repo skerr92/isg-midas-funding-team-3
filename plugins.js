@@ -96,6 +96,12 @@ function registerDonor(user) {
     })
 }
 
+function registerLiteracy(user) {
+    $.post("/lt_register", user, (data) => {
+        authenticate(data)
+    })
+}
+
 function login(user) {
     $.post('/login', user)
 }
