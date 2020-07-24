@@ -8,14 +8,14 @@ const db = 'mongodb+srv://admin:admin@cluster0.bnq3j.mongodb.net/Users?retryWrit
 userInstance.Promise
 
 let Users = userInstance.model('Users', {
-    local: {
+
         firstName: String,
         lastName: String,
         email: String,
         password: String,
         accountType: String,
         token: String
-    }
+
 })
 
 userInstance.connect(db, { useNewUrlParser: true} , (err) => {

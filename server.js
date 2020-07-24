@@ -24,15 +24,21 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
-/*app.use((req,res, next) => {
+app.use((req,res, next) => {
 	res.header("Access-Control-Allow-Origin", "*")
 	res.header("Access-control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept")
 	next()
-})*/
+})
 
 app.use(session({secret: 'midas-touch'}))
 app.use(passport.initialize())
-app.use(passport.session())
+//app.use(passport.session())
+app.use((req, res, next) => {
+    if(req.url.match('/st_register'))
+        passport.session()(req,res,next)
+    else
+        next()
+})
 app.use(flash())
 
 let auth = express.Router();
