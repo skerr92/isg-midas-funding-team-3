@@ -160,7 +160,8 @@ module.exports = (app,auth, passport) =>
 }
 let isLoggedIn = (req, res, next) => {
     console.log("looking to see if we can authenticate")
-    if (req.isAuthenticated) {
+    //console.log(req.isAuthenticated())
+    if (req.isAuthenticated()) {
         console.log("we're in the if is authenticated check")
         return next()
     }
