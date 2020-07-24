@@ -33,7 +33,7 @@ module.exports = (passport) => {
                 console.log("email: "+email)
                 console.log("password: "+password)
                 //console.log("firstName: " + req.body.firstName)
-                user_model.findOne({email: email}, (err, user) => {
+                user_model.findOne({'email': email}, (err, user) => {
                     if (err) {
                         console.log("where in the errors")
                         return done(err)
@@ -51,7 +51,7 @@ module.exports = (passport) => {
                         console.log("new user obj made")
                         newUser.email = email
                         console.log("set the email...")
-                        newUser.password = newUser.setPassword(password)
+                        newUser.password = newUser.generateHash(password)
                         console.log("set the password: " + newUser.password)
                         newUser.accountType = req.body.accountType
                         newUser.token = newUser.generateJWT()
@@ -70,28 +70,36 @@ module.exports = (passport) => {
                 } )
 
         }))
+    passport.use('local-login',new LocalStrategy({
+            usernameField : 'email',
+            passwordField : 'password',
+            passReqToCallback : true
+        },
+        function(req, email, password, done) {
+        console.log("we in here for login...")
+            user_model.findOne({ 'email': email }, function (err, user) {
+                if (err) { return done(err); }
+                if (!user) {
+                    return done(null, false, { message: 'Incorrect username.' });
+                }
+                let loginUser = new User()
+                loginUser.email = email
+                console.log(loginUser.email)
+                loginUser.firstName = user.firstName
+                console.log(user.firstName)
+                loginUser.lastName = user.lastName
+                loginUser.accountType = user.accountType
+                loginUser.password = user.password
+                console.log(user.password)
+                if (!loginUser.validatePassword(password)) {
+                    console.log("wrong password dummy")
+                    return done(null, false, { message: 'Incorrect password.' });
+                }
+                //console.log(user)
+                //console.log(loginUser)
+                return done(null, user);
+            });
+        }
+    ));
 }
-passport.use('local-login',new LocalStrategy({
-        usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true
-    },
-    function(req, email, password, done) {
-        user_model.findOne({ email: email }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
-            }
-            let loginUser = new User()
-            loginUser.email = email
-            console.log(loginUser.email)
-            loginUser.firstName = user.firstName
-            loginUser.lastName = user.lastName
-            loginUser.accountType = user.accountType
-            if (!loginUser.validatePassword(password)) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        });
-    }
-));
+

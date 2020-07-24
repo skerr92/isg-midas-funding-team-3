@@ -34,7 +34,11 @@ app.use(session({secret: 'midas-touch'}))
 app.use(passport.initialize())
 //app.use(passport.session())
 app.use((req, res, next) => {
-    if(req.url.match('/st_register'))
+    if(req.url.match('../st_register'))
+        passport.session()(req,res,next)
+    else if (req.url.match('../login'))
+        passport.session()(req, res, next)
+    else if (req.url.match('/st_dashboard'))
         passport.session()(req,res,next)
     else
         next()

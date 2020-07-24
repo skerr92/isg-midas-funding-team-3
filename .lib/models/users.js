@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 const userSchema = mongoose.Schema({
 
@@ -12,7 +13,19 @@ const userSchema = mongoose.Schema({
     token: String
 })
 
-userSchema.methods.setPassword = function(password) {
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(16), null);
+};
+
+// checking if password is valid
+userSchema.methods.validatePassword = function(password) {
+    //console.log("This is the local password: "+this.password)
+    //console.log(bcrypt.hashSync(password, bcrypt.genSaltSync(16),null))
+    return bcrypt.compareSync(password,this.password);
+};
+
+/*userSchema.methods.setPassword = function(password) {
     console.log("did we make it here?")
     this.salt = crypto.randomBytes(16).toString('hex')
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
@@ -22,8 +35,10 @@ userSchema.methods.setPassword = function(password) {
 userSchema.methods.validatePassword = function(password) {
     this.salt = crypto.randomBytes(16).toString('hex')
     const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
+    console.log("hashed: "+hash)
+    console.log("what is this: "+this.hash)
     return this.hash === hash
-}
+}*/
 
 userSchema.methods.generateJWT = function() {
     const today = new Date()

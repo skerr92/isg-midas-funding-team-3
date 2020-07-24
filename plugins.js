@@ -15,8 +15,8 @@ $(() => {
     }
     $('#login-btn').click(()=>{
         const user = {
-            username: $('#inputEmail'),
-            password: $('#inputPassword')
+            email: $('#inputEmail').val(),
+            password: $('#inputPassword').val()
         }
         login(user)
     })
