@@ -30,13 +30,14 @@ module.exports = (app,auth, passport) =>
             if (err) {return next(err)}
             console.log("now checking for no users...")
             //console.log(user)
-            if(!user) {return res.redirect('/register.html')}
+            if(!user) {return res.redirect('../register.html')}
             //req.user = user
             //return res.redirect('/st_dashboard')
             req.logIn(user, function (err) {
                 //console.log(err)
                 if (err) return next()
                 req.session.save(()=> {
+                    console.log("are we getting here?")
                     return res.redirect('/st_dashboard')
                 })
 
@@ -87,14 +88,15 @@ module.exports = (app,auth, passport) =>
             console.log(err)
             if (err) {return next(err)}
             console.log("now checking for no users...")
-            console.log(user)
-            if(!user) {return res.redirect('/register.html')}
+            //console.log(user)
+            if(!user) {return res.redirect('/signin.html')}
             //req.user = user
             //return res.redirect('/st_dashboard')
             req.logIn(user, function (err) {
                 //console.log(err)
                 if (err) return next()
                 req.session.save(()=> {
+                    console.log("are we getting here?")
                     return res.redirect('../st_dashboard')
                 })
 
