@@ -1,6 +1,6 @@
 //let socket = io()(server)
 
-const userurl = window.location.href
+const userurl = 'http://localhost:8080/'
 console.log(userurl)
 
 const NAME_KEY = 'name';
@@ -13,8 +13,15 @@ $(() => {
         localStorage.setItem(NAME_KEY, " ")
         localStorage.setItem(USER_KEY, " ")
     }
+    $('#login-btn').click(()=>{
+        const user = {
+            username: $('#inputEmail'),
+            password: $('#inputPassword')
+        }
+        login(user)
+    })
     $('#standard_signup').click(() => {
-        console.log("user clicked")
+        //console.log("user clicked")
         if ($("#inputPassword").val() === $("#inputRPassword").val()) {
             const user = {
                 firstName: $("#inputFirstName").val(),
@@ -55,26 +62,11 @@ $(() => {
         //}
     })
 
-    $('#literacy_signup').click(() => {
-        console.log("user clicked")
-        if ($("#inputPassword").val() === $("#inputRPassword").val()) {
-            const user = {
-                firstName: $("#inputFirstName").val(),
-                lastName: $("#inputLastName").val(),
-                email: $("#inputEmail").val(),
-                password: $("#inputPassword").val(),
-                accountType: "Financial Literacy User"
-            }
-            console.log(user)
-            registerLiteracy(user)
-
-        }
-    })
-
 })
 
 function authenticate(res) {
     let authresponse = res
+    console.log(res)
 
     if(!authresponse.token)
         return;
@@ -88,9 +80,7 @@ function authenticate(res) {
 
 function register(user) {
     console.log(user)
-    $.post( "http://localhost:8080/st_register", user, (data) => {
-        authenticate(data)
-    })
+    $.post( "/st_register", user)
     console.log("button pressed")
 }
 
@@ -110,4 +100,8 @@ function registerLiteracy(user) {
     $.post("/lt_register", user, (data) => {
         authenticate(data)
     })
+}
+
+function login(user) {
+    $.post('/login', user)
 }
