@@ -11,7 +11,7 @@ const userdb = require('./.lib/user_model')
 //const FinAdb = require('./.lib/user_financial_advisor_model')
 //const Donordb = require('./.lib/donor_model')
 const passport = require('passport')
-require('./.lib/config/passport')(passport)
+//require('./.lib/config/passport')(passport)
 const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
 const flash = require('connect-flash')
@@ -25,29 +25,30 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.use((req,res, next) => {
-	res.header("Access-Control-Allow-Origin", "*")
-	res.header("Access-control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept")
-	next()
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Methods","GET,HEAD,PUT,PATCH,POST,DELETE")
+    res.header("Access-control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept")
+    next()
 })
 
-app.use(session({secret: 'midas-touch'}))
-app.use(passport.initialize())
+//app.use(session({secret: 'midas-touch'}))
+//app.use(passport.initialize())
 //app.use(passport.session())
-app.use((req, res, next) => {
-    if(req.url.match('../st_register'))
+/*app.use((req, res, next) => {
+    if(req.url.match('/st_register'))
         passport.session()(req,res,next)
-    else if (req.url.match('../login'))
+    else if (req.url.match('/login'))
         passport.session()(req, res, next)
     else if (req.url.match('/st_dashboard'))
         passport.session()(req,res,next)
     else
         next()
-})
+})*/
 app.use(flash())
-
+app.use(cors())
 let auth = express.Router();
 app.use('/auth',auth)
-require('./.lib/routes/routes')(app, auth,passport)
+//require('./.lib/routes/routes')(app, auth,passport)
 app.use(express.static(__dirname))
 app.set('view engine', 'ejs')
 
@@ -61,7 +62,119 @@ io.on('connection', (socket) => {
     const session = socket.request.session
     session.connections++
     session.save()
-	console.log('user connected');
+    console.log('user connected');
 });
+auth.get('/st_register',(req, res) => {
+    userdb.find({}, (err, users) => {
+        res.send(users);
+    })
+});
+auth.get('/login', checkAuthenticated, (req, res) => {
+    userdb.find({}, (err, users) => {
+        res.send(users)
+    })
+})
+
+app.get('/user/me', checkAuthenticated, (req, res) => {
+    res.json(userdb.find(req.name));
+});
+
+app.post('/user/me', checkAuthenticated, (req, res) => {
+
+    let user = userdb.find({firstName: user, lastName: user});
+
+
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+
+    res.json(user);
+
+});
+
+auth.post('/login', async (req, res) => {
+    let userL = req.body;
+    //console.log(userL)
+    userdb.find({email: userL.email}, (err,users) => {
+        console.log("The user is: "+users[0]);
+        console.log(JSON.stringify(users[0]).indexOf(userL.email));
+        if(!users) {
+            console.log("I threw a no users response");
+            sendAuthError(res);
+        }
+
+        if(JSON.stringify(users[0]).search(userL.password)) {
+            console.log(users[0])
+            let loginName = userL.email;
+            let accountType = users[0].accountType
+            sendLoginToken(loginName,accountType,users, res);
+            console.log("we did it! We logged in!")
+        }
+        else {
+            console.log("I threw an invalid response...")
+            console.log(users[0])
+            sendAuthError(res)
+        }
+
+    });
+
+})
+
+auth.post('/st_register', async (req, res) => {
+    try {
+
+        let user = userdb(req.body);
+        console.log(user)
+
+        let savedUser = await user.save();
+        loginName = user.email;
+        console.log('saved');
+        //io.emit('user', req.body);
+        sendRegisterToken(loginName,user, res);
+        //res.sendStatus(200)
+    } catch (error) {
+        //res.sendStatus(500);
+        return console.error(error)
+    } finally {
+        console.log('User post called');
+    }
+
+});
+
+function sendLoginToken(loginUser,accountT, user, res) {
+    let token = jwt.sign(user[0].id, '123');
+    let account = accountT
+    console.log(account)
+    //io.emit('user',res.json({name: loginUser.name, token: token}));
+    console.log(loginUser)
+    res.status(200).send({name: loginUser, token, accountType: account})
+}
+function sendRegisterToken(loginUser,user, res) {
+    let token = jwt.sign(user.id, '123');
+    let account = user.accountType
+    //io.emit('user',res.json({name: loginUser.name, token: token}));
+    console.log(loginUser)
+    res.send({name: loginUser, token, accountType: account})
+}
+
+function sendAuthError(res) {
+    //console.log("the response is" + res.stringify())
+    return res.send({success: false, message: 'email or password incorrect'});
+}
+
+function checkAuthenticated(req, res, next) {
+    if(!req.header('Authorization'))
+        return res.status(401).send({message: 'Unauthorized request. Missing authentication header'});
+
+    let token = req.header('Authorization').split(' ')[1];
+
+    let payload = jwt.decode(token, '123');
+
+    if(!payload)
+        return res.status(401).send({message: 'Unauthorized request. Authentication header invalid'});
+
+    req.user = payload;
+
+    next();
+}
 
 
