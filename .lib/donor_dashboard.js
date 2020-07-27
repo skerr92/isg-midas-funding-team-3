@@ -8,9 +8,6 @@ function leaderboard() {
     aboutMidasLink.className = "nav-link"
     midasMembersLink.className = "nav-link"
 
-    const donorTitle = document.getElementById("donor_dashboard_title")
-    donorTitle.innerHTML = "Leaderboard"
-
     var leaderboardPage = document.getElementById("leaderboard")
     var donorStatusPage = document.getElementById("donor-status")
     var aboutMidasPage = document.getElementById("about-midas")
@@ -31,9 +28,6 @@ function donorStatus() {
     aboutMidasLink.className = "nav-link"
     midasMembersLink.className = "nav-link"
 
-    const donorTitle = document.getElementById("donor_dashboard_title")
-    donorTitle.innerHTML = "Donation Status"
-
     var leaderboardPage = document.getElementById("leaderboard")
     var donorStatusPage = document.getElementById("donor-status")
     var aboutMidasPage = document.getElementById("about-midas")
@@ -42,6 +36,8 @@ function donorStatus() {
     donorStatusPage.style.display = ""
     aboutMidasPage.style.display = "none"
     midasMembersPage.style.display = "none"
+
+
 
 }
 
@@ -54,9 +50,6 @@ function aboutMidas() {
     donorStatusLink.className = "nav-link"
     aboutMidasLink.className = "nav-link active"
     midasMembersLink.className = "nav-link"
-
-    const donorTitle = document.getElementById("donor_dashboard_title")
-    donorTitle.innerHTML = "About Midas"
 
     var leaderboardPage = document.getElementById("leaderboard")
     var donorStatusPage = document.getElementById("donor-status")
@@ -77,9 +70,6 @@ function midasMembers() {
     donorStatusLink.className = "nav-link"
     aboutMidasLink.className = "nav-link"
     midasMembersLink.className = "nav-link active"
-
-    const donorTitle = document.getElementById("donor_dashboard_title")
-    donorTitle.innerHTML = "Midas Members"
 
     var leaderboardPage = document.getElementById("leaderboard")
     var donorStatusPage = document.getElementById("donor-status")
