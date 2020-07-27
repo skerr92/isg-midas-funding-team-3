@@ -61,6 +61,17 @@ $(() => {
         registerDonor(user)
         //}
     })
+    $("#sendAdvisee").click(()=>{
+        sendMessage({
+            name: "Bob Marley",
+            message:$("#message").val()});
+    })
+    getMessages()
+    $("#sendFA").click(()=>{
+        sendMessage({
+            name: "Financial Advisor",
+            message:$("#message").val()});
+    })
 
     // $('#joinNewsletter').click(() => {
     //     const user = {
@@ -122,3 +133,18 @@ function registerLiteracy(user) {
 function login(user) {
     $.post(userurl+'auth/login', user)
 }
+function addMessages(message){
+    $("“#messages”").append(`
+      <h4> ${message.name} </h4>
+      <p>  ${message.message} </p>`)
+}
+
+function getMessages(){
+    $.get(userurl+'messages', (data) => {
+        data.forEach(addMessages);
+    })
+}
+
+function sendMessage(message){
+    $.post(userurl+'messages', message)
+        }

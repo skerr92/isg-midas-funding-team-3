@@ -8,6 +8,7 @@ const io = require('socket.io')(http)
 const jwt = require('jsonwebtoken')
 const users = require("./.lib/models/users")
 const userdb = require('./.lib/user_model')
+const db = require('./.lib/db')
 //const FinAdb = require('./.lib/user_financial_advisor_model')
 //const Donordb = require('./.lib/donor_model')
 const passport = require('passport')
@@ -30,6 +31,29 @@ app.use((req,res, next) => {
     res.header("Access-control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept")
     next()
 })
+
+app.get('/messages', (req, res) => {
+    db.find({},(err, messages)=> {
+        res.send(messages);
+    })
+})
+
+app.get('/messages', (req, res) => {
+    db.find({},(err, messages)=> {
+        res.send(messages);
+    })
+})
+
+app.post('/messages', (req, res) => {
+    let message = new db(req.body);
+    message.save((err) =>{
+        if(err)
+            sendStatus(500);
+        io.emit('message', req.body);
+        res.sendStatus(200);
+    })
+})
+
 
 //app.use(session({secret: 'midas-touch'}))
 //app.use(passport.initialize())
