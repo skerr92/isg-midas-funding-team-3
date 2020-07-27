@@ -62,6 +62,16 @@ $(() => {
         //}
     })
 
+    $('#joinNewsletter').click(() => {
+        const user = {
+            firstName: "anon",
+            lastName: "anon",
+            email: $("#inputEmail").val(),
+            password: null,
+            accountType: "Newsletter only"
+        }
+    })
+
 })
 
 function authenticate(res) {
@@ -98,6 +108,12 @@ function registerDonor(user) {
 
 function registerLiteracy(user) {
     $.post("/lt_register", user, (data) => {
+        authenticate(data)
+    })
+}
+
+function registerNewsletter(user) {
+    $.post("/nl_register", user, (data) => {
         authenticate(data)
     })
 }
