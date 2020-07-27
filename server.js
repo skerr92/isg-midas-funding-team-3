@@ -59,10 +59,7 @@ const server = http.listen('8080', () => {
 
 
 io.on('connection', (socket) => {
-    const session = socket.request.session
-    session.connections++
-    session.save()
-    console.log('user connected');
+    console.log("user connected")
 });
 auth.get('/st_register',(req, res) => {
     userdb.find({}, (err, users) => {
@@ -71,6 +68,7 @@ auth.get('/st_register',(req, res) => {
 });
 auth.get('/login', checkAuthenticated, (req, res) => {
     userdb.find({}, (err, users) => {
+        io.emit('user',users)
         res.send(users)
     })
 })
@@ -146,6 +144,7 @@ function sendLoginToken(loginUser,accountT, user, res) {
     console.log(account)
     //io.emit('user',res.json({name: loginUser.name, token: token}));
     console.log(loginUser)
+    io.emit('user',{name: loginUser, token, accountType: account})
     res.status(200).send({name: loginUser, token, accountType: account})
 }
 function sendRegisterToken(loginUser,user, res) {
