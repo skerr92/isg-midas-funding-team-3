@@ -63,16 +63,16 @@ $(() => {
         //}
     })
 
-    $('#joinNewsletter').click(() => {
-        const user = {
-            firstName: "anon",
-            lastName: "anon",
-            email: $("#inputEmail").val(),
-            password: null,
-            accountType: "Newsletter only"
-        }
-        registerNewsletter(user)
-    })
+    // $('#joinNewsletter').click(() => {
+    //     const user = {
+    //         firstName: "anon",
+    //         lastName: "anon",
+    //         email: $("#inputEmail").val(),
+    //         password: null,
+    //         accountType: "Newsletter only"
+    //     }
+    //     registerNewsletter(user)
+    // })
 
 })
 
@@ -114,11 +114,11 @@ function registerLiteracy(user) {
     })
 }
 
-function registerNewsletter(user) {
-    $.post("/nl_register", user, (data) => {
-        authenticate(data)
-    })
-}
+// function registerNewsletter(user) {
+//     $.post("/nl_register", user, (data) => {
+//         authenticate(data)
+//     })
+// }
 
 function login(user) {
     $.post(userurl+'auth/login', user)
