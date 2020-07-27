@@ -70,6 +70,7 @@ $(() => {
             password: null,
             accountType: "Newsletter only"
         }
+        registerNewsletter(user)
     })
 
 })
