@@ -1,4 +1,3 @@
-//let socket = io()(server)
 
 const userurl = 'http://localhost:8080/'
 console.log(userurl)
@@ -6,6 +5,8 @@ console.log(userurl)
 const NAME_KEY = 'name';
 const TOKEN_KEY = 'token';
 const USER_KEY = 'user'
+
+
 
 $(() => {
     if(TOKEN_KEY === " " || NAME_KEY === " " || USER_KEY) {
@@ -91,12 +92,12 @@ function authenticate(res) {
 
 function register(user) {
     console.log(user)
-    $.post( "/st_register", user)
+    $.post( userurl+"/st_register", user)
     console.log("button pressed")
 }
 
 function registerAdvisor(user) {
-    $.post("/st_register", user, (data) => {
+    $.post(userurl+"/st_register", user, (data) => {
         authenticate(data)
     })
 }
@@ -120,5 +121,5 @@ function registerNewsletter(user) {
 }
 
 function login(user) {
-    $.post('/login', user)
+    $.post(userurl+'auth/login', user)
 }
