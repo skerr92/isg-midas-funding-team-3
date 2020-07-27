@@ -53,10 +53,10 @@
 }())
 
 function leaderboard() {
-    const leaderboardLink = document.getElementById("donor_leaderboard")
-    const donorStatusLink = document.getElementById("donor_status_link")
-    const aboutMidasLink = document.getElementById("about_midas")
-    const midasMembersLink = document.getElementById("midas_members")
+    let leaderboardLink = document.getElementById("donor_leaderboard")
+    let donorStatusLink = document.getElementById("donor_status_link")
+    let aboutMidasLink = document.getElementById("about_midas")
+    let midasMembersLink = document.getElementById("midas_members")
     donorStatusLink.className = "nav-link "
     leaderboardLink.className = "nav-link active"
     aboutMidasLink.className = "nav-link"
@@ -64,7 +64,6 @@ function leaderboard() {
 
     const donorTitle = document.getElementById("donor_dashboard_title")
     donorTitle.innerHTML = "Leaderboard"
-
 
     var leaderboardPage = document.getElementById("leaderboard")
     var donorStatusPage = document.getElementById("donor-status")
@@ -77,10 +76,10 @@ function leaderboard() {
 }
 
 function donorStatus() {
-    const leaderboardLink = document.getElementById("donor_leaderboard")
-    const donorStatusLink = document.getElementById("donor_status_link")
-    const aboutMidasLink = document.getElementById("about_midas")
-    const midasMembersLink = document.getElementById("midas_members")
+    let leaderboardLink = document.getElementById("donor_leaderboard")
+    let donorStatusLink = document.getElementById("donor_status_link")
+    let aboutMidasLink = document.getElementById("about_midas")
+    let midasMembersLink = document.getElementById("midas_members")
     leaderboardLink.className = "nav-link"
     donorStatusLink.className = "nav-link active"
     aboutMidasLink.className = "nav-link"
@@ -101,10 +100,10 @@ function donorStatus() {
 }
 
 function aboutMidas() {
-    const leaderboardLink = document.getElementById("donor_leaderboard")
-    const donorStatusLink = document.getElementById("donor_status_link")
-    const aboutMidasLink = document.getElementById("about_midas")
-    const midasMembersLink = document.getElementById("midas_members")
+    let leaderboardLink = document.getElementById("donor_leaderboard")
+    let donorStatusLink = document.getElementById("donor_status_link")
+    let aboutMidasLink = document.getElementById("about_midas")
+    let midasMembersLink = document.getElementById("midas_members")
     leaderboardLink.className = "nav-link"
     donorStatusLink.className = "nav-link"
     aboutMidasLink.className = "nav-link active"
@@ -124,10 +123,10 @@ function aboutMidas() {
 }
 
 function midasMembers() {
-    const leaderboardLink = document.getElementById("donor_leaderboard")
-    const donorStatusLink = document.getElementById("donor_status_link")
-    const aboutMidasLink = document.getElementById("about_midas")
-    const midasMembersLink = document.getElementById("midas_members")
+    let leaderboardLink = document.getElementById("donor_leaderboard")
+    let donorStatusLink = document.getElementById("donor_status_link")
+    let aboutMidasLink = document.getElementById("about_midas")
+    let midasMembersLink = document.getElementById("midas_members")
     leaderboardLink.className = "nav-link"
     donorStatusLink.className = "nav-link"
     aboutMidasLink.className = "nav-link"
