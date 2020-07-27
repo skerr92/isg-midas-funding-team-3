@@ -72,6 +72,9 @@ auth.get('/login', checkAuthenticated, (req, res) => {
         res.send(users)
     })
 })
+app.get('/do_dashboard', (req,res) => {
+    res.render('do_dashboard')
+})
 
 app.get('/user/me', checkAuthenticated, (req, res) => {
     res.json(userdb.find(req.name));
