@@ -76,6 +76,10 @@ app.get('/do_dashboard', (req,res) => {
     res.render('do_dashboard')
 })
 
+app.get('/fa_dashboard', (req,res) => {
+    res.render('fa_dashboard')
+})
+
 app.get('/user/me', checkAuthenticated, (req, res) => {
     res.json(userdb.find(req.name));
 });
