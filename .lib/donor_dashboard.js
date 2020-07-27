@@ -67,9 +67,13 @@ function leaderboard() {
 
 
     var leaderboardPage = document.getElementById("leaderboard")
-    leaderboardPage.style.display = ""
     var donorStatusPage = document.getElementById("donor-status")
+    var aboutMidasPage = document.getElementById("about-midas")
+    var midasMembersPage = document.getElementById("midas-members")
+    leaderboardPage.style.display = ""
     donorStatusPage.style.display = "none"
+    aboutMidasPage.style.display = "none"
+    midasMembersPage.style.display = "none"
 }
 
 function donorStatus() {
@@ -86,9 +90,13 @@ function donorStatus() {
     donorTitle.innerHTML = "Donation Status"
 
     var leaderboardPage = document.getElementById("leaderboard")
-    leaderboardPage.style.display = "none"
     var donorStatusPage = document.getElementById("donor-status")
+    var aboutMidasPage = document.getElementById("about-midas")
+    var midasMembersPage = document.getElementById("midas-members")
+    leaderboardPage.style.display = "none"
     donorStatusPage.style.display = ""
+    aboutMidasPage.style.display = "none"
+    midasMembersPage.style.display = "none"
 
 }
 
@@ -104,6 +112,15 @@ function aboutMidas() {
 
     const donorTitle = document.getElementById("donor_dashboard_title")
     donorTitle.innerHTML = "About Midas"
+
+    var leaderboardPage = document.getElementById("leaderboard")
+    var donorStatusPage = document.getElementById("donor-status")
+    var aboutMidasPage = document.getElementById("about-midas")
+    var midasMembersPage = document.getElementById("midas-members")
+    leaderboardPage.style.display = "none"
+    donorStatusPage.style.display = "none"
+    aboutMidasPage.style.display = ""
+    midasMembersPage.style.display = "none"
 }
 
 function midasMembers() {
@@ -118,4 +135,13 @@ function midasMembers() {
 
     const donorTitle = document.getElementById("donor_dashboard_title")
     donorTitle.innerHTML = "Midas Members"
+
+    var leaderboardPage = document.getElementById("leaderboard")
+    var donorStatusPage = document.getElementById("donor-status")
+    var aboutMidasPage = document.getElementById("about-midas")
+    var midasMembersPage = document.getElementById("midas-members")
+    leaderboardPage.style.display = "none"
+    donorStatusPage.style.display = "none"
+    aboutMidasPage.style.display = "none"
+    midasMembersPage.style.display = ""
 }
