@@ -64,21 +64,92 @@
 <body class="text-center">
 <form id="donation" class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">Donate to Midas Collaborative</h1>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" id="donateAnon" value="sign-up" onclick="disableSignup()"> Click here to donate anonymously
+        </label>
+    </div>
+
+    <script>
+        function disableSignup() {
+            var checkBox = document.getElementById("donateAnon")
+            var fName = document.getElementById("inputFirstName")
+            var lName = document.getElementById("inputLastName")
+            var email = document.getElementById("inputEmail")
+            var inPassword = document.getElementById("inputPassword")
+            var rePassword = document.getElementById("inputRPassword")
+            var signUpBox = document.getElementById("checkDonor")
+
+            if (checkBox.checked == true) {
+                fName.placeholder = ""
+                lName.placeholder = ""
+                email.placeholder = ""
+                inPassword.placeholder = ""
+                rePassword.placeholder = ""
+                inPassword.required = false;
+                rePassword.required = false;
+                inPassword.style.display = "none";
+                rePassword.style.display = "none";
+                signUpBox.checked = false;
+            } else {
+                fName.placeholder = "First name"
+                lName.placeholder = "Last name"
+                email.placeholder = "Email address"
+            }
+
+        }
+    </script>
+
     <label for="inputFirstName" class="sr-only">First name</label>
     <input type="firstName" id="inputFirstName" class="form-control" placeholder="First name" required autofocus>
     <label for="inputLastName" class="sr-only">Last name</label>
     <input type="lastName" id="inputLastName" class="form-control" placeholder="Last name" required autofocus>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" style="display:none" class="form-control" placeholder="Password" required>
+    <label for="inputRPassword" class="sr-only">Re-enter Password</label>
+    <input type="password" id="inputRPassword" style="display:none" class="form-control" placeholder="Re-enter Password" required>
 
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="sign-up"> Would you like to create a Midas Touch Donor account to stay up to date with Midas Collaborative and your contribution?
+            <input type="checkbox" id="checkDonor" value="sign-up" onclick="displayPasswordPrompt()"> Would you like to create a Midas Touch Donor account to stay up to date with Midas Collaborative and your contribution?
         </label>
     </div>
+
+    <script>
+        function displayPasswordPrompt() {
+            var checkBox = document.getElementById("checkDonor")
+            var fName = document.getElementById("inputFirstName")
+            var lName = document.getElementById("inputLastName")
+            var email = document.getElementById("inputEmail")
+            var inPassword = document.getElementById("inputPassword")
+            var rePassword = document.getElementById("inputRPassword")
+            var disableBox = document.getElementById("donateAnon")
+
+            if (checkBox.checked == true) {
+                fName.placeholder = "First name"
+                lName.placeholder = "Last name"
+                email.placeholder = "Email address"
+                inPassword.placeholder = "Password"
+                rePassword.placeholder = "Re-enter Password"
+                inPassword.required = true;
+                rePassword.required = true;
+                inPassword.style.display = "block";
+                rePassword.style.display = "block";
+                disableBox.checked = false;
+            } else {
+                inPassword.style.display = "none";
+                rePassword.style.display = "none";
+            }
+        }
+    </script>
+
+
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="sign-up"> Would you like to subscribe to the Midas Collaborative monthly newsletter?
+            <input type="checkbox" id="joinNewsletter" value="sign-up"> Would you like to subscribe to the Midas Collaborative monthly newsletter?
         </label>
     </div>
     <p><a class="dbox-donation-button" style="background: #2d81c5 url('https://d1iczxrky3cnb2.cloudfront.net/red_logo.png') no-repeat 37px center; color: #fff; text-decoration: none; font-family: Verdana,sans-serif; display: inline-block; font-size: 16px; padding: 15px 38px 15px 75px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; box-shadow: 0 1px 0 0 #1f5a89; text-shadow: 0 1px rgba(0, 0, 0, 0.3);" href="https://donorbox.org/nonprofitcampaign">Donate With Donorbox</a></p>
