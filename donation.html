@@ -79,6 +79,7 @@
             var email = document.getElementById("inputEmail")
             var inPassword = document.getElementById("inputPassword")
             var rePassword = document.getElementById("inputRPassword")
+            var signUpBox = document.getElementById("checkDonor")
 
             if (checkBox.checked == true) {
                 fName.placeholder = ""
@@ -88,14 +89,13 @@
                 rePassword.placeholder = ""
                 inPassword.required = false;
                 rePassword.required = false;
+                inPassword.style.display = "none";
+                rePassword.style.display = "none";
+                signUpBox.checked = false;
             } else {
                 fName.placeholder = "First name"
                 lName.placeholder = "Last name"
                 email.placeholder = "Email address"
-                inPassword.placeholder = "Password"
-                rePassword.placeholder = "Re-enter Password"
-                inPassword.required = true;
-                rePassword.required = true;
             }
 
         }
@@ -121,12 +121,24 @@
     <script>
         function displayPasswordPrompt() {
             var checkBox = document.getElementById("checkDonor")
+            var fName = document.getElementById("inputFirstName")
+            var lName = document.getElementById("inputLastName")
+            var email = document.getElementById("inputEmail")
             var inPassword = document.getElementById("inputPassword")
             var rePassword = document.getElementById("inputRPassword")
+            var disableBox = document.getElementById("donateAnon")
 
             if (checkBox.checked == true) {
+                fName.placeholder = "First name"
+                lName.placeholder = "Last name"
+                email.placeholder = "Email address"
+                inPassword.placeholder = "Password"
+                rePassword.placeholder = "Re-enter Password"
+                inPassword.required = true;
+                rePassword.required = true;
                 inPassword.style.display = "block";
                 rePassword.style.display = "block";
+                disableBox.checked = false;
             } else {
                 inPassword.style.display = "none";
                 rePassword.style.display = "none";
