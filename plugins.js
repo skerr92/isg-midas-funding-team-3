@@ -36,7 +36,7 @@ $(() => {
 
         }
     })
-
+    console.log("hi there")
     $('#advisor_signup').click(() => {
         if ($("#inputPassword").val() === $("#inputRPassword").val()) {
             const user = {

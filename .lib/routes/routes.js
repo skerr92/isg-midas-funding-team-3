@@ -4,7 +4,7 @@ module.exports = (app,auth, passport) =>
 
     auth.get('/signin', async (req, res) => {
         try {
-            console.log()
+            console.log("hello")
         } catch {
             res.sendStatus(500)
         } finally {
