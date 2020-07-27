@@ -83,28 +83,28 @@ module.exports = (app,auth, passport) =>
         res.json({user: finalUser.toAuthJSON()});
     });*/
 
-    app.post('/nl_register', function(req, res, next) {
-        passport.authenticate('local-signup', (err, user, info) => {
-            console.log("we're in now! first check for errors..")
-            console.log(err)
-            if (err) {return next(err)}
-            console.log("now checking for no users...")
-            //console.log(user)
-            if(!user) {return res.redirect('../register.html')}
-            //req.user = user
-            //return res.redirect('/st_dashboard')
-            req.logIn(user, function (err) {
-                //console.log(err)
-                if (err) return next()
-                req.session.save(()=> {
-                    console.log("are we getting here?")
-                    return res.redirect('../index.html')
-                })
-
-            })
-
-        })(req, res, next)
-    })
+    // app.post('/nl_register', function(req, res, next) {
+    //     passport.authenticate('local-signup', (err, user, info) => {
+    //         console.log("we're in now! first check for errors..")
+    //         console.log(err)
+    //         if (err) {return next(err)}
+    //         console.log("now checking for no users...")
+    //         //console.log(user)
+    //         if(!user) {return res.redirect('../register.html')}
+    //         //req.user = user
+    //         //return res.redirect('/st_dashboard')
+    //         req.logIn(user, function (err) {
+    //             //console.log(err)
+    //             if (err) return next()
+    //             req.session.save(()=> {
+    //                 console.log("are we getting here?")
+    //                 return res.redirect('../index.html')
+    //             })
+    //
+    //         })
+    //
+    //     })(req, res, next)
+    // })
 
     app.post('/login', function(req, res, next) {
         passport.authenticate('local-login', (err, user, info) => {
