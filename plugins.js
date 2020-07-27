@@ -66,13 +66,14 @@ $(() => {
             name: "Bob Marley",
             message:$("#message").val()});
     })
-    getMessages()
+
     $("#sendFA").click(()=>{
+        console.log("were are trying to send")
         sendMessage({
             name: "Financial Advisor",
             message:$("#message").val()});
     })
-
+    getMessages()
     // $('#joinNewsletter').click(() => {
     //     const user = {
     //         firstName: "anon",
@@ -134,7 +135,7 @@ function login(user) {
     $.post(userurl+'auth/login', user)
 }
 function addMessages(message){
-    $("“#messages”").append(`
+    $("#messages").append(`
       <h4> ${message.name} </h4>
       <p>  ${message.message} </p>`)
 }
@@ -147,4 +148,4 @@ function getMessages(){
 
 function sendMessage(message){
     $.post(userurl+'messages', message)
-        }
+}

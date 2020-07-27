@@ -24,6 +24,7 @@
         const front = io('http://localhost:8080');
         front.on('message')
     </script>
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -130,17 +131,16 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div class=”container”>
+            <div class="container">
                 <br>
-                <div class=”jumbotron”>
-                    <h1 class=”display-4">Send Message</h1>
+                <div class="jumbotron">
+                    <h1 class="display-4">Send Message</h1>
                     <br>
                     <h2>Robert Marley, Jr. MBA, CFA</h2>
                     <br>
-                    <textarea id = “message” class=”form-control” placeholder=”Your Message Here”>
-</textarea>
+                    <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
                     <br>
-                    <button id=”sendFA” class=”btn btn-success”>Send</button>
+                    <button id="sendFA" class="btn">Send</button>
                 </div>
                 <div id=”messages”>
 
@@ -293,8 +293,6 @@
         </main>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="./.lib/dashboard.js"></script></body>
