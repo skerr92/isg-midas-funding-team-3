@@ -150,13 +150,16 @@
                 <div class="jumbotron">
                     <h1 class="display-4">Send Message</h1>
                     <br>
-                    <h2>Robert Marley, Jr. MBA, CFA</h2>
+                    <h2 id="fa-name">Robert Marley, Jr. MBA, CFA</h2>
                     <br>
                     <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
                     <br>
                     <button id="sendFA" class="btn">Send</button>
                 </div>
-                <div class="jumbotron" id=”msgs” style="child-align: middle; background: transparent">
+                <div class="jumbotron" id="msgs">
+                    <ul class="jumbotron" style="child-align: middle; background: transparent">
+                    </ul>
+                </div>
 
                 </div><script type="text/javascript">
                     const front = io('http://localhost:8080');

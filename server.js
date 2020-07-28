@@ -105,6 +105,9 @@ app.get('/do_dashboard', (req,res) => {
 app.get('/fa_dashboard', (req,res) => {
     res.render('fa_dashboard')
 })
+app.get('/fl_dashboard', (req,res) => {
+    res.render('fl_dashboard')
+})
 
 app.get('/user/me', checkAuthenticated, (req, res) => {
     res.json(userdb.find(req.name));

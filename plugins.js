@@ -62,6 +62,22 @@ $(() => {
         //}
     })
 
+    $("#sendAdvisee").click(()=>{
+        sendMessage({
+            name: "Bob Marley",
+            message:$("#message").val()
+        });
+        $("#message").val('')
+    })
+
+    $("#sendFA").click(()=>{
+        console.log("were are trying to send")
+        sendMessage({
+            name: "Robert Marley, Jr MBA, CFA",
+            message:$("#message").val()
+        });
+        $("#message").val('')
+    })
     //getMessages()
     // $('#joinNewsletter').click(() => {
     //     const user = {
@@ -122,6 +138,16 @@ function registerLiteracy(user) {
 
 function login(user) {
     $.post(userurl+'auth/login', user)
+}
+function addMessages(message){
+    console.log("The name is: "+message.name)
+    $("#msgs .jumbotron").prepend(`<h4>${message.name}</h4><p>${message.message}</p>`)
+}
+function getMessages(){
+    $.get('http://localhost:8080/messages', (data) => {
+        //console.log(data)
+        data.forEach(addMessages);
+    })
 }
 
 

@@ -31,34 +31,9 @@
         </div>
     <script type="text/javascript">
     const front = io('http://localhost:8080');
-    //front.on('message', addMessages)
+    front.on('message', addMessages)
     getMessages()
-    function addMessages(message){
-        console.log("The name is: "+message.name)
-        $("#msgs .jumbotron").append(`<h4>${message.name}</h4><p>${message.message}</p>`)
-    }
-    function getMessages(){
-        $.get('http://localhost:8080/messages', (data) => {
-            //console.log(data)
-            data.forEach(addMessages);
-        })
-    }
-    $("#sendAdvisee").click(()=>{
-        sendMessage({
-            name: "Bob Marley",
-            message:$("#message").val()
-        });
-        $("#message").val('')
-    })
 
-    $("#sendFA").click(()=>{
-        console.log("were are trying to send")
-        sendMessage({
-            name: "Financial Advisor",
-            message:$("#message").val()
-        });
-        $("#message").val('')
-    })
 </script>
 </div>
 
