@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Dashboard Template · Bootstrap</title>
+    <title>Financial Advisor Dashboard</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
@@ -20,6 +20,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
     <script src="plugins.js"></script>
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
     <script src="socket.io/socket.io.js"></script>
 
 
@@ -129,6 +130,19 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <button class="btn" style="bottom: 20px; right: 30px;position: fixed; width: 80px; height: 80px; background: blue; display: block; z-index: 99; cursor: pointer; font-size: 18px; border-radius: 40px; color: white" onclick="openChat()">Chat</button>
+            <script>
+                function openChat() {
+                    if (document.getElementById("chat-window").style.display === 'none') {
+                        document.getElementById("chat-window").style.display = 'block'
+                        document.getElementById("chat-window").addEventListener("scroll", function(event) {
+                            let newDiv = doc
+                        })
+                    } else {
+                        document.getElementById("chat-window").style.display = 'none'
+                    }
+                }
+            </script>
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="clientGraph">
 
@@ -146,21 +160,20 @@
             </div>
 
             <canvas class="my-4 w-100" id="myChart" width="500" height="100"></canvas>
-            <div class="container">
+            <div class="container" id="chat-window" style="display: none; bottom: 120px; right: 20px; width: 300px; height: 750px; border-color: black; border-style: solid; border-radius: 10px; z-index: 99; position: fixed; background: white; color: darkolivegreen">
                 <br>
-                <div class="jumbotron">
-                    <h1 class="display-4">Send Message</h1>
-                    <br>
+                <div class="jumbotron" style="size: auto">
+                    <div class="jumbotron" id="msgs">
+                        <ul class="jumbotron" style="child-align: middle; background: transparent">
+                        </ul>
+                    </div>
                     <h2 id="fa-name">Robert Marley, Jr. MBA, CFA</h2>
                     <br>
                     <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
                     <br>
                     <button id="sendFA" class="btn">Send</button>
                 </div>
-                <div class="jumbotron" id="msgs">
-                    <ul class="jumbotron" style="child-align: middle; background: transparent">
-                    </ul>
-                </div>
+
 
                 <script type="text/javascript">
                     const front = io('http://localhost:8080');
