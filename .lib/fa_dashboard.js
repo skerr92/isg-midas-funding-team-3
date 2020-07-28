@@ -12,7 +12,7 @@ function savingsPlans() {
     $( document ).ready(function() {
 
         // GET REQUEST
-        $("#allUsers").click(function(event){
+        $("#clientSavingsLink").click(function(event){
             event.preventDefault();
             ajaxGet();
         });
