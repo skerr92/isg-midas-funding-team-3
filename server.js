@@ -54,7 +54,14 @@ app.post('/messages', (req, res) => {
     })
 })
 
-
+app.get('/users', (req, res) => {
+    userdb.find({}, (err, users) => {
+        for (user in users) {
+            let name = JSON.stringify(user.firstName)
+            res.status(200).send(name);
+        }
+    });
+});
 //app.use(session({secret: 'midas-touch'}))
 //app.use(passport.initialize())
 //app.use(passport.session())
