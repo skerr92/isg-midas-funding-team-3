@@ -58,6 +58,34 @@ function aboutMidas() {
     leaderboardPage.style.display = "none"
     aboutMidasPage.style.display = ""
     midasMembersPage.style.display = "none"
+
+    $( document ).ready(function() {
+
+        // GET REQUEST
+        $("#allUsers").click(function(event){
+            event.preventDefault();
+            ajaxGet();
+        });
+
+        // DO GET
+        function ajaxGet(){
+            $.ajax({
+                type : "GET",
+                url : "/users",
+                success: function(result){
+                    $('#getResultDiv ul').empty();
+                    $.each(result, function(i, user){
+                        $('#getResultDiv .list-group').append(user.firstName + " " + user.lastName + "<br>")
+                    });
+                    console.log("Success: ", result);
+                },
+                error : function(e) {
+                    $("#getResultDiv").html("<strong>Error</strong>");
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
+    })
 }
 
 function midasMembers() {
