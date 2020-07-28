@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="plugins.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+</head>
+<body>
+<div class="container" style="">
+    <br>
+    <div class="jumbotron">
+        <h1 class="display-4">Send Message</h1>
+        <br>
+        <h2>Robert Marley, Jr. MBA, CFA</h2>
+        <br>
+        <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
+        <br>
+        <button id="sendFA" class="btn">Send</button>
+    </div>
+
+        <div class="jumbotron" id="msgs">
+            <ul class="jumbotron" style="child-align: middle; background: transparent">
+            </ul>
+        </div>
+    <script type="text/javascript">
+    const front = io('http://localhost:8080');
+    //front.on('message', addMessages)
+    getMessages()
+    function addMessages(message){
+        console.log("The name is: "+message.name)
+        $("#msgs .jumbotron").append(`<h4>${message.name}</h4><p>${message.message}</p>`)
+    }
+    function getMessages(){
+        $.get('http://localhost:8080/messages', (data) => {
+            //console.log(data)
+            data.forEach(addMessages);
+        })
+    }
+    $("#sendAdvisee").click(()=>{
+        sendMessage({
+            name: "Bob Marley",
+            message:$("#message").val()
+        });
+        $("#message").val('')
+    })
+
+    $("#sendFA").click(()=>{
+        console.log("were are trying to send")
+        sendMessage({
+            name: "Financial Advisor",
+            message:$("#message").val()
+        });
+        $("#message").val('')
+    })
+</script>
+</div>
+
+</body>
+</html>

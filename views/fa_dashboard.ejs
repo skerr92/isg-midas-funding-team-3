@@ -20,10 +20,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="plugins.js"></script>
     <script src="socket.io/socket.io.js"></script>
-    <script>
-        const front = io('http://localhost:8080');
-        front.on('message')
-    </script>
+
 
     <style>
         .bd-placeholder-img {
@@ -131,22 +128,9 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div class="container">
-                <br>
-                <div class="jumbotron">
-                    <h1 class="display-4">Send Message</h1>
-                    <br>
-                    <h2>Robert Marley, Jr. MBA, CFA</h2>
-                    <br>
-                    <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
-                    <br>
-                    <button id="sendFA" class="btn">Send</button>
-                </div>
-                <div id=”messages”>
 
-                </div>
-            </div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="clientGraph">
+
                 <h1 class="h2">Aggregate Client Financial Progress</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
@@ -161,7 +145,35 @@
             </div>
 
             <canvas class="my-4 w-100" id="myChart" width="500" height="100"></canvas>
+            <div class="container" style="height: 1500px">
+                <br>
+                <div class="jumbotron">
+                    <h1 class="display-4">Send Message</h1>
+                    <br>
+                    <h2>Robert Marley, Jr. MBA, CFA</h2>
+                    <br>
+                    <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
+                    <br>
+                    <button id="sendFA" class="btn">Send</button>
+                </div>
+                <div class="jumbotron" id=”msgs” style="child-align: middle; background: transparent">
 
+                </div><script type="text/javascript">
+                    const front = io('http://localhost:8080');
+                    front.on('message', addMessages)
+                    getMessages()
+                    function addMessages(message){
+                        console.log(message.name)
+                        $("#msgs").prepend(`<h4>${message.name}</h4><p>${message.message}</p>`)
+                    }
+                    function getMessages(){
+                        $.get('http://localhost:8080/messages', (data) => {
+                            console.log(data)
+                            data.forEach(addMessages);
+                        })
+                    }
+                </script>
+            </div>
             <h2>Your Clients</h2>
             <div class="table-responsive" id="clientTable">
                 <table class="table table-striped table-sm">

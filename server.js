@@ -34,15 +34,13 @@ app.use((req,res, next) => {
 
 app.get('/messages', (req, res) => {
     db.find({},(err, messages)=> {
-        res.send(messages);
+        console.log(messages)
+        console.log(messages[0].name)
+        //io.emit('message', messages)
+        res.status(200).send(messages);
     })
 })
 
-app.get('/messages', (req, res) => {
-    db.find({},(err, messages)=> {
-        res.send(messages);
-    })
-})
 
 app.post('/messages', (req, res) => {
     let message = new db(req.body);
