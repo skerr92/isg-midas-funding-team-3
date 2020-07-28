@@ -52,7 +52,12 @@ function leaderboard() {
                 url : "/users",
                 success: function(result){
                     $('#leaderboard-table').bootstrapTable({
-                        data: result
+                        sortName: 'firstName',
+                        sortOrder: 'asc',
+                        data: result,
+                        formatLoadingMessage: function() {
+                            return '';
+                        }
                     })
 
                     console.log("Success: ", result);
