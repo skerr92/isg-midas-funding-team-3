@@ -18,6 +18,7 @@ function donorStatus() {
     midasMembersPage.style.display = "none"
 
 
+
 }
 
 function leaderboard() {
@@ -38,6 +39,31 @@ function leaderboard() {
     leaderboardPage.style.display = ""
     aboutMidasPage.style.display = "none"
     midasMembersPage.style.display = "none"
+    console.log("leaderboard clicked")
+    $( document ).ready(function() {
+
+        // GET REQUEST
+        ajaxGet();
+
+        // DO GET
+        function ajaxGet(){
+            $.ajax({
+                type : "GET",
+                url : "/users",
+                success: function(result){
+                    $('#leaderboard-table').bootstrapTable({
+                        data: result
+                    })
+
+                    console.log("Success: ", result);
+                },
+                error : function(e) {
+                    $("#getResultDiv").html("<strong>Error</strong>");
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
+    })
 }
 
 function aboutMidas() {
