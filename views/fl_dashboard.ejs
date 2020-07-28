@@ -22,7 +22,7 @@
     <script src="socket.io/socket.io.js"></script>
     <script>
         const front = io('http://localhost:8080');
-        front.on('message')
+        front.on('message', getMessages)
     </script>
 
 

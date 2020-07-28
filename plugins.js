@@ -35,7 +35,7 @@ $(() => {
 
         }
     })
-    console.log("hi there")
+    //console.log("hi there")
     $('#advisor_signup').click(() => {
         if ($("#inputPassword").val() === $("#inputRPassword").val()) {
             const user = {
@@ -61,19 +61,8 @@ $(() => {
         registerDonor(user)
         //}
     })
-    $("#sendAdvisee").click(()=>{
-        sendMessage({
-            name: "Bob Marley",
-            message:$("#message").val()});
-    })
 
-    $("#sendFA").click(()=>{
-        console.log("were are trying to send")
-        sendMessage({
-            name: "Financial Advisor",
-            message:$("#message").val()});
-    })
-    getMessages()
+    //getMessages()
     // $('#joinNewsletter').click(() => {
     //     const user = {
     //         firstName: "anon",
@@ -134,17 +123,9 @@ function registerLiteracy(user) {
 function login(user) {
     $.post(userurl+'auth/login', user)
 }
-function addMessages(message){
-    $("#messages").append(`
-      <h4> ${message.name} </h4>
-      <p>  ${message.message} </p>`)
-}
 
-function getMessages(){
-    $.get(userurl+'messages', (data) => {
-        data.forEach(addMessages);
-    })
-}
+
+
 
 function sendMessage(message){
     $.post(userurl+'messages', message)
