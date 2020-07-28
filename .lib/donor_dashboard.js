@@ -39,14 +39,11 @@ function leaderboard() {
     leaderboardPage.style.display = ""
     aboutMidasPage.style.display = "none"
     midasMembersPage.style.display = "none"
-
+    console.log("leaderboard clicked")
     $( document ).ready(function() {
 
         // GET REQUEST
-        $("#donor_leaderboard").click(function(event){
-            event.preventDefault();
-            ajaxGet();
-        });
+        ajaxGet();
 
         // DO GET
         function ajaxGet(){
@@ -54,10 +51,10 @@ function leaderboard() {
                 type : "GET",
                 url : "/users",
                 success: function(result){
-                    $('#getResultDiv ul').empty();
-                    $.each(result, function(i, user){
-                        $('#getResultDiv .list-group').append(user.firstName + " " + user.lastName + "<br>")
-                    });
+                    $('#leaderboard-table').bootstrapTable({
+                        data: result
+                    })
+
                     console.log("Success: ", result);
                 },
                 error : function(e) {
