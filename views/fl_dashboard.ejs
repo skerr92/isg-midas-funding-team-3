@@ -20,10 +20,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="plugins.js"></script>
     <script src="socket.io/socket.io.js"></script>
-    <script>
-        const front = io('http://localhost:8080');
-        front.on('message', getMessages)
-    </script>
 
 
     <style>
@@ -143,8 +139,24 @@
                     <br>
                     <button id="sendAdvisee" class="btn btn-success">Send</button>
                 </div>
-                <div id=”messages”>
-
+            </div><script type="text/javascript">
+                const front = io('http://localhost:8080');
+                front.on('message', addMessages)
+                getMessages()
+                function addMessages(message){
+                    console.log(message.name)
+                    $("#msgs").prepend(`<h4>${message.name}</h4><p>${message.message}</p>`)
+                }
+                function getMessages(){
+                    $.get('http://localhost:8080/messages', (data) => {
+                        console.log(data)
+                        data.forEach(addMessages);
+                    })
+                }
+            </script>
+                <div class="jumbotron" id="msgs">
+                    <ul class="jumbotron" style="child-align: middle; background: transparent">
+                    </ul>
                 </div>
             </div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
