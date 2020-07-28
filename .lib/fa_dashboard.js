@@ -9,33 +9,33 @@ function savingsPlans() {
     reportsLink.className = "nav-link"
     findClient.className = "nav-link"
 
-    $( document ).ready(function() {
-
-        // GET REQUEST
-        $("#clientSavingsLink").click(function(event){
-            event.preventDefault();
-            ajaxGet();
-        });
-
-        // DO GET
-        function ajaxGet(){
-            $.ajax({
-                type : "GET",
-                url : "/users",
-                success: function(result){
-                    $('#getResultDiv ul').empty();
-                    $.each(result, function(i, user){
-                        $('#getResultDiv .list-group').append(user.firstName + " " + user.lastName + "<br>")
-                    });
-                    console.log("Success: ", result);
-                },
-                error : function(e) {
-                    $("#getResultDiv").html("<strong>Error</strong>");
-                    console.log("ERROR: ", e);
-                }
-            });
-        }
-    })
+    // $( document ).ready(function() {
+    //
+    //     // GET REQUEST
+    //     $("#clientSavingsLink").click(function(event){
+    //         event.preventDefault();
+    //         ajaxGet();
+    //     });
+    //
+    //     // DO GET
+    //     function ajaxGet(){
+    //         $.ajax({
+    //             type : "GET",
+    //             url : "/users",
+    //             success: function(result){
+    //                 $('#getResultDiv ul').empty();
+    //                 $.each(result, function(i, user){
+    //                     $('#getResultDiv .list-group').append(user.firstName + " " + user.lastName + "<br>")
+    //                 });
+    //                 console.log("Success: ", result);
+    //             },
+    //             error : function(e) {
+    //                 $("#getResultDiv").html("<strong>Error</strong>");
+    //                 console.log("ERROR: ", e);
+    //             }
+    //         });
+    //     }
+    // })
 }
 
 function messageClient() {
