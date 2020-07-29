@@ -35,8 +35,8 @@ app.use((req,res, next) => {
 
 app.get('/messages', (req, res) => {
     db.find({},(err, messages)=> {
-        console.log(messages)
-        console.log(messages[0].name)
+        //console.log(messages)
+        //console.log(messages[0].name)
         //io.emit('message', messages)
         res.status(200).send(messages);
     })

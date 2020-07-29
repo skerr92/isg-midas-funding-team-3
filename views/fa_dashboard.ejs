@@ -144,60 +144,66 @@
                 }
             </script>
 
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="clientGraph">
+<!--            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="clientGraph">-->
 
-                <h1 class="h2">Aggregate Client Financial Progress</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
-                    </button>
-                </div>
-            </div>
+<!--                <h1 class="h2">Aggregate Client Financial Progress</h1>-->
+<!--                <div class="btn-toolbar mb-2 mb-md-0">-->
+<!--                    <div class="btn-group mr-2">-->
+<!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
+<!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>-->
+<!--                    </div>-->
+<!--                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+<!--                        <span data-feather="calendar"></span>-->
+<!--                        This week-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <canvas class="my-4 w-100" id="myChart" width="500" height="100"></canvas>
-            <div class="container" id="chat-window" style="display: none; bottom: 120px; right: 20px; width: 450px; height: 400px; border-color: black; border-style: solid; border-radius: 10px; z-index: 99; position: fixed; background: white; color: darkolivegreen; box-shadow: 5px 5px grey "
-                 data-infinite-scroll='{ "path": ".pagination__next", "append": ".post", "history": false }'>
-                <br>
-                <div class="container_chat" style="height: 225px; overflow: scroll; top: 0; right: 20px; " id="msgs">
+<!--            <canvas class="my-4 w-100" id="myChart" width="500" height="100"></canvas>-->
 
-                </div>
-                <textarea id="message" class="form-control" placeholder="Your Message Here" style="bottom: 10px;"></textarea>
-                <br>
-                <button id="sendFA" class="btn">Send</button>
+            <h1 class="h2">Aggregate Client Financial Progress</h1>
+            <canvas id="barChart"></canvas>
 
 
-                <script type="text/javascript">
-                    $('.container_chat').infiniteScroll({
-                        // options
-                        path: '.pagination__next',
-                        append: '.post',
-                        history: false,
-                    });
-                    const front = io('http://localhost:8080');
-                    front.on('message', addMessages)
-                    getMessages()
-                    function addMessages(message){
-                        console.log(message.name)
-                        $("#msgs").prepend(`
-                                <article class="post">
-                                <h4>${message.name}</h4>
-                                <p>${message.message}</p>
-                                </article>
-                                `)
-                    }
-                    function getMessages(){
-                        $.get('http://localhost:8080/messages', (data) => {
-                            console.log(data)
-                            data.forEach(addMessages);
-                        })
-                    }
-                </script>
-            </div>
+
+<!--            <div class="container" id="chat-window" style="display: none; bottom: 120px; right: 20px; width: 450px; height: 400px; border-color: black; border-style: solid; border-radius: 10px; z-index: 99; position: fixed; background: white; color: darkolivegreen; box-shadow: 5px 5px grey "-->
+<!--                 data-infinite-scroll='{ "path": ".pagination__next", "append": ".post", "history": false }'>-->
+<!--                <br>-->
+<!--                <div class="container_chat" style="height: 225px; overflow: scroll; top: 0; right: 20px; " id="msgs">-->
+
+<!--                </div>-->
+<!--                <textarea id="message" class="form-control" placeholder="Your Message Here" style="bottom: 10px;"></textarea>-->
+<!--                <br>-->
+<!--                <button id="sendFA" class="btn">Send</button>-->
+
+
+<!--                <script type="text/javascript">-->
+<!--                    $('.container_chat').infiniteScroll({-->
+<!--                        // options-->
+<!--                        path: '.pagination__next',-->
+<!--                        append: '.post',-->
+<!--                        history: false,-->
+<!--                    });-->
+<!--                    const front = io('http://localhost:8080');-->
+<!--                    front.on('message', addMessages)-->
+<!--                    getMessages()-->
+<!--                    function addMessages(message){-->
+<!--                        //console.log(message.name)-->
+<!--                        $("#msgs").prepend(`-->
+<!--                                <article class="post">-->
+<!--                                <h4>${message.name}</h4>-->
+<!--                                <p>${message.message}</p>-->
+<!--                                </article>-->
+<!--                                `)-->
+<!--                    }-->
+<!--                    function getMessages(){-->
+<!--                        $.get('http://localhost:8080/messages', (data) => {-->
+<!--                            //console.log(data)-->
+<!--                            data.forEach(addMessages);-->
+<!--                        })-->
+<!--                    }-->
+<!--                </script>-->
+<!--            </div>-->
 
 
             <script>
@@ -220,8 +226,6 @@
                                         return "";
                                     }
                                 })
-
-                                console.log("Success: ", result);
                             },
                             error : function(e) {
                                 $("#getResultDiv").html("<strong>Error</strong>");
