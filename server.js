@@ -239,6 +239,7 @@ auth.post('/fl_register', async (req, res) => {
 function sendLoginToken(loginUser,accountT, user, res) {
     let token = jwt.sign(user[0].id, '123');
     let account = accountT
+    user.token = token
     console.log(account)
     //io.emit('user',res.json({name: loginUser.name, token: token}));
     console.log(loginUser)
@@ -248,6 +249,7 @@ function sendLoginToken(loginUser,accountT, user, res) {
 function sendRegisterToken(loginUser,user, res) {
     let token = jwt.sign(user.id, '123');
     let account = user.accountType
+    user.token = token
     //io.emit('user',res.json({name: loginUser.name, token: token}));
     console.log(loginUser)
     res.send({name: loginUser, token, accountType: account})
