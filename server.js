@@ -58,6 +58,12 @@ app.get('/users', (req, res) => {
         res.status(200).send(users);
     });
 });
+
+app.get('/litUsers', (req, res) => {
+    Literacydb.find({}, (err, users) => {
+        res.status(200).send(users);
+    })
+})
 //app.use(session({secret: 'midas-touch'}))
 //app.use(passport.initialize())
 //app.use(passport.session())
