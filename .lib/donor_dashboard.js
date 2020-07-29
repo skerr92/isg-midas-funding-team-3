@@ -52,8 +52,8 @@ function leaderboard() {
                 url : "/donors",
                 success: function(result){
                     $('#leaderboard-table').bootstrapTable({
-                        sortName: 'firstName',
-                        sortOrder: 'asc',
+                        sortName: 'allTimeDonations',
+                        sortOrder: 'desc',
                         data: result,
                         formatLoadingMessage: function() {
                             return '';
