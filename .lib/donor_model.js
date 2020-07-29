@@ -14,8 +14,8 @@ let DonorUsers = donorInstance.model('Donors', {
     password: String,
     accountType: String,
     token: String,
-    recentDonation: String,
-    allTimeDonations: String
+    recentDonation: Number,
+    allTimeDonations: Number
 })
 
 donorInstance.connect(db, { useNewUrlParser: true} , (err) => {
