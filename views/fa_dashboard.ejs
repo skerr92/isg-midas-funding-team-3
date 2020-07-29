@@ -160,28 +160,35 @@
             </div>
 
             <canvas class="my-4 w-100" id="myChart" width="500" height="100"></canvas>
-            <div class="container" id="chat-window" style="display: none; bottom: 120px; right: 20px; width: 300px; height: 750px; border-color: black; border-style: solid; border-radius: 10px; z-index: 99; position: fixed; background: white; color: darkolivegreen">
+            <div class="container" id="chat-window" style="display: none; bottom: 120px; right: 20px; width: 450px; height: 400px; border-color: black; border-style: solid; border-radius: 10px; z-index: 99; position: fixed; background: white; color: darkolivegreen; box-shadow: 5px 5px grey "
+                 data-infinite-scroll='{ "path": ".pagination__next", "append": ".post", "history": false }'>
                 <br>
-                <div class="jumbotron" style="size: auto">
-                    <div class="jumbotron" id="msgs">
-                        <ul class="jumbotron" style="child-align: middle; background: transparent">
-                        </ul>
-                    </div>
-                    <h2 id="fa-name">Robert Marley, Jr. MBA, CFA</h2>
-                    <br>
-                    <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
-                    <br>
-                    <button id="sendFA" class="btn">Send</button>
+                <div class="container_chat" style="height: 225px; overflow: scroll; top: 0; right: 20px; " id="msgs">
+
                 </div>
+                <textarea id="message" class="form-control" placeholder="Your Message Here" style="bottom: 10px;"></textarea>
+                <br>
+                <button id="sendFA" class="btn">Send</button>
 
 
                 <script type="text/javascript">
+                    $('.container_chat').infiniteScroll({
+                        // options
+                        path: '.pagination__next',
+                        append: '.post',
+                        history: false,
+                    });
                     const front = io('http://localhost:8080');
                     front.on('message', addMessages)
                     getMessages()
                     function addMessages(message){
                         console.log(message.name)
-                        $("#msgs").prepend(`<h4>${message.name}</h4><p>${message.message}</p>`)
+                        $("#msgs").prepend(`
+                                <article class="post">
+                                <h4>${message.name}</h4>
+                                <p>${message.message}</p>
+                                </article>
+                                `)
                     }
                     function getMessages(){
                         $.get('http://localhost:8080/messages', (data) => {
