@@ -52,7 +52,7 @@ function leaderboard() {
                 url : "/donors",
                 success: function(result){
                     $('#leaderboard-table').bootstrapTable({
-                        sortName: 'allTimeDonations',
+                        sortName: 'donorPoints',
                         sortOrder: 'desc',
                         data: result,
                         formatLoadingMessage: function() {
