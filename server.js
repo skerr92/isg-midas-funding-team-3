@@ -9,8 +9,8 @@ const jwt = require('jsonwebtoken')
 const users = require("./.lib/models/users")
 const userdb = require('./.lib/user_model')
 const db = require('./.lib/db')
-//const FinAdb = require('./.lib/user_financial_advisor_model')
-//const Donordb = require('./.lib/donor_model')
+const FinAdb = require('./.lib/user_financial_advisor_model')
+const Donordb = require('./.lib/donor_model')
 const passport = require('passport')
 //require('./.lib/config/passport')(passport)
 const cookieParser = require('cookie-parser')
@@ -157,6 +157,46 @@ auth.post('/st_register', async (req, res) => {
     try {
 
         let user = userdb(req.body);
+        console.log(user)
+
+        let savedUser = await user.save();
+        loginName = user.email;
+        console.log('saved');
+        //io.emit('user', req.body);
+        sendRegisterToken(loginName,user, res);
+        //res.sendStatus(200)
+    } catch (error) {
+        //res.sendStatus(500);
+        return console.error(error)
+    } finally {
+        console.log('User post called');
+    }
+
+});
+auth.post('/do_register', async (req, res) => {
+    try {
+
+        let user = Donordb(req.body);
+        console.log(user)
+
+        let savedUser = await user.save();
+        loginName = user.email;
+        console.log('saved');
+        //io.emit('user', req.body);
+        sendRegisterToken(loginName,user, res);
+        //res.sendStatus(200)
+    } catch (error) {
+        //res.sendStatus(500);
+        return console.error(error)
+    } finally {
+        console.log('User post called');
+    }
+
+});
+auth.post('/fa_register', async (req, res) => {
+    try {
+
+        let user = FinAdb(req.body);
         console.log(user)
 
         let savedUser = await user.save();
