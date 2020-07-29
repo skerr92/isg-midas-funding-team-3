@@ -49,7 +49,7 @@ function leaderboard() {
         function ajaxGet(){
             $.ajax({
                 type : "GET",
-                url : "/users",
+                url : "/donors",
                 success: function(result){
                     $('#leaderboard-table').bootstrapTable({
                         sortName: 'firstName',
