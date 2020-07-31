@@ -70,6 +70,12 @@ app.get('/donors', (req, res) => {
         res.status(200).send(users);
     })
 })
+
+app.get('/advisors', (req, res) => {
+    FinAdb.find({}, (err, users) => {
+        res.status(200).send(users);
+    })
+})
 //app.use(session({secret: 'midas-touch'}))
 //app.use(passport.initialize())
 //app.use(passport.session())
