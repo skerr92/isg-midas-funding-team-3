@@ -2,7 +2,7 @@ const mongoose = require('mongoose').Mongoose
 const emailValidator = require('email-validator')
 
 let advisorInstance = new mongoose()
-const db = 'mongodb+srv://admin:admin@cluster0.bnq3j.mongodb.net/FinAUsers?retryWrites=true&w=majority'
+const db = 'mongodb+srv://<user>:<pass>@cluster0.bnq3j.mongodb.net/FinAUsers?retryWrites=true&w=majority'
 
 let FinAUsers = advisorInstance.model('FinancialAdvisors', {
     firstName: String,
