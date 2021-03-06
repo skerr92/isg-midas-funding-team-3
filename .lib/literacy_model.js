@@ -3,7 +3,7 @@ const emailValidator = require('email-validator')
 
 let literacyInstance = new mongoose()
 
-const db = 'mongodb+srv://admin:admin@cluster0.bnq3j.mongodb.net/FinLitUsers?retryWrites=true&w=majority'
+const db = 'mongodb+srv://<user>:<pass>@cluster0.bnq3j.mongodb.net/FinLitUsers?retryWrites=true&w=majority'
 
 literacyInstance.Promise
 
